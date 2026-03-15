@@ -67,6 +67,21 @@ Palisch: Wützcaw
 Palisch: Schelyalye
 ```
 
+## Docker Usage
+
+You can run the Discord bot inside a Docker container:
+
+1. **Build the image**:
+   ```bash
+   docker build -t palisch-bot .
+   ```
+
+2. **Run the container**:
+   Ensure you have a `.env` file with your `DISCORD_TOKEN`.
+   ```bash
+   docker run --env-file .env palisch-bot
+   ```
+
 ## Project Structure
 
 ```text

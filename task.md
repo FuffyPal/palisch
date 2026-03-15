@@ -14,3 +14,11 @@
 - [x] Phase 5: Interactive Mode (TUI) Support
   - [x] Implement fallback to interactive `input()` if no CLI arguments are provided
   - [x] Ensure the experience is user-friendly for non-CLI users
+- [x] Phase 6: Discord Bot Integration
+  - [x] Create `bot.py` with Discord.py integration
+  - [x] Implement `!palc` command to convert text via bot
+  - [x] Secure sensitive data using `.env` and `python-dotenv`
+  - [x] Translate bot interface and comments to English (PEP8 compliant)
+- [x] Phase 7: Dockerization
+  - [x] Create `Dockerfile` for containerized execution
+  - [x] Add `.dockerignore` to keep the image clean
