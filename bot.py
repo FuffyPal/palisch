@@ -46,6 +46,41 @@ async def palc(ctx, *, text: str):
         await ctx.send(f"System error: {e}")
 
 
+@bot.slash_command(name="palc", description="Converts the given text using the Palisch converter.")
+async def palc_slash(ctx: discord.ApplicationContext, text: str):
+    """
+    Converts the given text using the Palisch converter.
+    Usage: /palc <text>
+    """
+    try:
+        await ctx.defer()
+        # Run the converter script as a subprocess
+        command = [sys.executable, "main.py", "-t", text]
+
+        process = subprocess.run(
+            command,
+            capture_output=True,
+            text=True,
+            encoding='utf-8'  # Important for Turkish characters
+        )
+
+        # Get the output from the terminal
+        output = process.stdout.strip()
+
+        if output:
+            await ctx.respond(f"**Cuteee lang~ :3 **{output}")
+        else:
+            # If there's an error, check stderr
+            error = process.stderr.strip()
+            await ctx.respond(f"An error occurred: {error}")
+
+    except Exception as e:
+        try:
+            await ctx.respond(f"System error: {e}")
+        except Exception:
+            pass
+
+
 if __name__ == "__main__":
     if TOKEN:
         bot.run(TOKEN)
